@@ -2,8 +2,10 @@
 
 BUILD_DIR=$1
 
-cat << EOF
----
-default_process_types:
-  graphana_agent: bin/agent -config.file agent.yml -config.expand-env
-EOF
+echo "--- {}"
+
+# cat << EOF
+# ---
+# default_process_types:
+#   graphana_agent: bin/agent -config.file agent.yml -config.expand-env
+# EOF
