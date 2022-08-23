@@ -49,11 +49,7 @@ if [ -n ${ADD_GRAFANA_AGENT_TO_PROCFILE:-""} ]; then
   CUR_PROCFILE=$(head -n 1 "${BUILD_DIR}/Procfile")
   cat ${BUILD_DIR}/Procfile 
 
-  replace="web: "
-  replacewith=" "
-  NEW_CUR_PROCFILE="${CUR_PROCFILE/${replace}/${replacewith}}"
-
-  echo "${replace}\$HOME/bin/grafana-agent -config.file \$HOME/agent.yml -config.expand-env &&${NEW_CUR_PROCFILE}" > ${BUILD_DIR}/Procfile 
+  echo "${CUR_PROCFILE} && cd \$HOME && bin/grafana-agent -config.file agent.yml -config.expand-env" > ${BUILD_DIR}/Procfile 
   echo "-----> Procfile after"
   cat ${BUILD_DIR}/Procfile 
 fi
