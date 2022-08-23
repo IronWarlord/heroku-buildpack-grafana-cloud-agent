@@ -40,4 +40,4 @@ envsubst < $BUILD_DIR/config/grafana-agent.yml > $BUILD_DIR/agent.yml
 # cp $BUILD_DIR/config/grafana-agent.yml $BUILD_DIR/grafana-agent.yml
 
 # Debugging
-cat $BUILD_DIR/agent.yml
+# cat $BUILD_DIR/agent.yml
