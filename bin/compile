@@ -46,11 +46,11 @@ envsubst < $BUILD_DIR/config/grafana-agent.yml > $BUILD_DIR/agent.yml
 if [ -n ${ADD_GRAFANA_AGENT_TO_PROCFILE:-""} ]; then
   echo "Add grafana agent process to Procfile" | indent
   cat << EOT >> ${BUILD_DIR}/Procfile
-graphana_agent: \$HOME/bin/agent -config.file \$HOME/agent.yml -config.expand-env
+graphana_agent: \$HOME/bin/grafana-agent -config.file \$HOME/agent.yml -config.expand-env
 EOT
 fi
 
 if [ -n ${HEROKUISH:-""} ]; then
   echo "Override Procfile for herokuish" | indent
-  echo "graphana_agent: bin/agent -config.file agent.yml -config.expand-env" > ${BUILD_DIR}/Procfile
+  echo "graphana_agent: \$HOME/bin/grafana-agent -config.file \$HOME/agent.yml -config.expand-env" > ${BUILD_DIR}/Procfile
 fi
